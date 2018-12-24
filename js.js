@@ -23,6 +23,14 @@ for (var x = 0; x < wordArrayBlank.length; x++) {
 document.getElementById("blank").innerHTML = wordArrayBlank.join(" ");
 
 
+//------------Add Event Listner to Buttons--------//
+for (var x = 0; x<26; x++){
+    var butt = document.querySelectorAll("button");
+    butt[x].addEventListener("click", function(){
+        guessFunction(this);
+    });
+}
+
 
 //------------Reveals Correct Guesses---------//
 function guessFunction(letter) {
