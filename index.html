@@ -12,28 +12,56 @@
 </head>
 
 <body>
-    <div class="container">
-        <h1>Hangman Game!</h1>
-        <hr>
+    <!------------Header------------->
+    <header>
+        <div class="container">
+            <h1>Hangman Game!</h1>
+        </div>
+    </header>
 
-        <h4>
-            Here is the word to guess:
-        </h4>
-    </div>
-
-    <div class="container">
-        <p id="blank"></p>
-        <p id="wrong">Incorrect Guesses:</p>
+    <!------------Main------------->
+    <div class="container" id="main">
         <div class="row">
-            <div class="col-1">
-                <input class="form-control" type="text" id="guess" onkeydown="guessFunction()">
+            <div class="col-6">
+                <div class="jumbotron">Hello</div>
+                <p id="blank" class="text-center"></p>
+                <p id="wrong">Incorrect Guesses:</p>
+            </div>
+
+            <div class="col-6">
+                <button onclick="guessFunction(this)" value="A" type="button" class="btn btn-light">A</button>
+                <button onclick="guessFunction(this)" value="B" type="button" class="btn btn-light">B</button>
+                <button onclick="guessFunction(this)" value="C" type="button" class="btn btn-light">C</button>
+                <button onclick="guessFunction(this)" value="D" type="button" class="btn btn-light">D</button>
+                <button onclick="guessFunction(this)" value="E" type="button" class="btn btn-light">E</button>
+                <button onclick="guessFunction(this)" value="F" type="button" class="btn btn-light">F</button>
+                <button onclick="guessFunction(this)" value="G" type="button" class="btn btn-light">G</button>
+                <button onclick="guessFunction(this)" value="H" type="button" class="btn btn-light">H</button>
+                <button onclick="guessFunction(this)" value="I" type="button" class="btn btn-light">I</button>
+                <button onclick="guessFunction(this)" value="J" type="button" class="btn btn-light">J</button>
+                <button onclick="guessFunction(this)" value="K" type="button" class="btn btn-light">K</button>
+                <button onclick="guessFunction(this)" value="L" type="button" class="btn btn-light">L</button>
+                <button onclick="guessFunction(this)" value="M" type="button" class="btn btn-light">M</button>
+                <button onclick="guessFunction(this)" value="N" type="button" class="btn btn-light">N</button>
+                <button onclick="guessFunction(this)" value="O" type="button" class="btn btn-light">O</button>
+                <button onclick="guessFunction(this)" value="P" type="button" class="btn btn-light">P</button>
+                <button onclick="guessFunction(this)" value="Q" type="button" class="btn btn-light">Q</button>
+                <button onclick="guessFunction(this)" value="R" type="button" class="btn btn-light">R</button>
+                <button onclick="guessFunction(this)" value="S" type="button" class="btn btn-light">S</button>
+                <button onclick="guessFunction(this)" value="T" type="button" class="btn btn-light">T</button>
+                <button onclick="guessFunction(this)" value="U" type="button" class="btn btn-light">U</button>
+                <button onclick="guessFunction(this)" value="V" type="button" class="btn btn-light">V</button>
+                <button onclick="guessFunction(this)" value="W" type="button" class="btn btn-light">W</button>
+                <button onclick="guessFunction(this)" value="X" type="button" class="btn btn-light">X</button>
+                <button onclick="guessFunction(this)" value="Y" type="button" class="btn btn-light">Y</button>
+                <button onclick="guessFunction(this)" value="Z" type="button" class="btn btn-light">Z</button>
             </div>
         </div>
     </div>
 
 
-
     <script src="./js.js"></script>
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"

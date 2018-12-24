@@ -1,3 +1,24 @@
-h1{
+
+
+header h1{
     text-align: center;
+    margin-bottom: 0;
+}
+
+header .container{
+    padding-top: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px black solid;
+    margin-bottom: 25px;
+}
+
+#main .btn{
+    border-radius: 10px;
+    font-size: 1.5rem;
+    width: 50px;
+    margin: 3px;
+}
+
+#main [A]{
+    color: red;
 }
