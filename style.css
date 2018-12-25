@@ -1,5 +1,4 @@
 
-
 header h1{
     text-align: center;
     margin-bottom: 0;
@@ -21,4 +20,8 @@ header .container{
 
 #main [A]{
     color: red;
+}
+
+#blank{
+    font-size: 30px;
 }

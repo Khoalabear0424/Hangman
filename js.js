@@ -1,7 +1,26 @@
 
 
 //-----------Create Word List-------------//
-wordList = ["Harry Potter", "Ezri", "Iron Man", "Wonder Woman", "Hulk", "Yo Momma", "Miles Morales", "Superman", "Legolas", "El Chupacabra"];
+wordList = ["Spiderman", "Venom", "Iron Man", "Hawk Eye", "Hulk", "Black Panther", "Ant Man", "Black Widow", "Dead Pool", "Wolverine", "Cyclops", "Phoenix"];
+
+//-------------Img List-----------------//
+imgList = [
+    "https://www.syfy.com/sites/syfy/files/wire/legacy/34038.jpg",
+    "https://www.gannett-cdn.com/presto/2018/10/03/USAT/bb930017-108b-47cc-9d0b-47a5eefb734f-GW-PUBLICITY-00187_r.jpg?crop=5999,3374,x1,y62&width=3200&height=1680&fit=bounds",
+    "https://i.ytimg.com/vi/yKHeEOoMw64/maxresdefault.jpg",
+    "https://thecineasteslament.files.wordpress.com/2011/12/jeremy-renner.jpg",
+    "https://dceptiongaming.files.wordpress.com/2016/02/1414472485.jpg",
+    "https://media.vanityfair.com/photos/5a7a33609b38580e8603ca37/master/w_768,c_limit/Black-Panther.jpg",
+    "http://images.fandango.com/images/fandangoblog/Marvel_AntMan-150601.jpg",
+    "https://data.whicdn.com/images/136232434/original.jpg",
+    "https://cdn-static.denofgeek.com/sites/denofgeek/files/2016/02/deadpool_face.jpg",
+    "https://hips.hearstapps.com/digitalspyuk.cdnds.net/17/10/1489149452-wolverine-surprise-hugh-jackman-wants-to-be-wolverine-forever-and-here-s-how-he-can-do-it.jpeg?resize=480:*",
+    "https://static1.srcdn.com/wordpress/wp-content/uploads/X-Men-Apocalypse-Cyclops-Tye-Sheridan-Hi-Res1.jpg",
+    "https://i.amz.mshcdn.com/Wm09wUKlO6fa7l4jH0gDP3zhCkk=/950x534/filters:quality(90)/https%3A%2F%2Fblueprint-api-production.s3.amazonaws.com%2Fuploads%2Fcard%2Fimage%2F209004%2F24136897352_c5d0ac2fa3_o.jpg"
+]
+
+console.log(imgList[0]);
+
 
 var random = Math.floor(Math.random() * wordList.length);
 var word = wordList[random];
@@ -48,20 +67,30 @@ function guessFunction(letter) {
         } else {
             //--------Collects Wrong Guesses------//
             counter++;
-            if (counter == wordArray.length && !wrongGuesses.includes(userGuess)) {
-                wrongGuesses.push(userGuess);
-            }
+            // if (counter == wordArray.length && !wrongGuesses.includes(userGuess)) {
+            //     wrongGuesses.push(userGuess);
+            // }
+
+            //^^ THis was used to display incorrect guesses but since i added red backgrounds to incorrect guesses, dont need this anymore
         }
     }
-//-------Colors Red to Wrong Guess
+    
+    //-------Colors Red to Wrong Guess
     if(counter==wordArray.length){
         $("button[value=" + userGuess + "]").css({
             "color":"white",
             "background-color":"red"
         });
     }
-    document.getElementById("wrong").innerHTML = "Incorrect Guesses: " + wrongGuesses.join(" ");
+    
+    function wait(ms){
+        var start = new Date().getTime();
+        var end = start;
+        while(end < start + ms) {
+            end = new Date().getTime();
+        }
+    }
+    
     document.getElementById("blank").innerHTML = wordArrayBlank.join(" ");
 }
-
 
