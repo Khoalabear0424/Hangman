@@ -65,13 +65,11 @@ var cap = document.getElementById("caption");
 cap.innerHTML = captionListHint[random];
 
 var word = wordList[random];
-console.log(word);
-
-
-
 var wordArray = word.split("");
 var wordArrayBlank = word.split("");
 var wrongGuesses = [];
+
+
 
 
 //-----------Display Blank Words-----------//
@@ -119,10 +117,9 @@ function guessFunction(letter) {
         }
     }
 
-    
+
     //--------------Win State---------------//
     if (!wordArrayBlank.includes(" __ ")) {
-        console.log("WIN!")
         var secondPath = "./img/hero/";
 
         $("#photo").fadeOut(
@@ -136,7 +133,8 @@ function guessFunction(letter) {
         });
     }
 
-    //-------Color Wrong Guess
+
+    //-------Color Wrong Guess---------------//
     if (counter == wordArray.length) {
         $("button[value=" + userGuess + "]").css({
             "color": "purple",
@@ -154,5 +152,10 @@ function guessFunction(letter) {
 
     document.getElementById("blank").innerHTML = wordArrayBlank.join(" ");
 }
+
+function reload(){
+    location.reload();
+}
+
 
 
