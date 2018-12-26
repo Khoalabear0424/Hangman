@@ -1,9 +1,18 @@
 
-
-//-----------Create Word List-------------//
-wordList = ["Spiderman", "Venom", "Iron Man", "Hawk Eye", "Hulk", "Black Panther", "Ant Man", "Black Widow", "Dead Pool", "Wolverine", "Cyclops", "Phoenix"];
-
-//-------------Img List-----------------//
+wordList = [
+    "Spiderman", 
+    "Venom", 
+    "Iron Man", 
+    "Hawk Eye", 
+    "Hulk", 
+    "Black Panther", 
+    "Ant Man", 
+    "Black Widow", 
+    "Dead Pool", 
+    "Wolverine", 
+    "Cyclops", 
+    "Phoenix"
+];
 imgList = [
     "1.png",
     "2.png",
@@ -17,15 +26,29 @@ imgList = [
     "10.png",
     "11.png",
     "12.png"
+];
+captionList = [
+    "A student, a photographer, and your friendly neighborhood hero.",
+    "A failed photographer, he's not Peter Parker's biggest fan.",
+    "He's gonna die in Avengers Endgame.",
+    "His super power honestly isn't really a super power.",
+    "Don't make him angry!",
+    "WAKANDA FOREVAHHH!!",
+    "He can kick your ass without you ever even seeing it.",
+    "She's an assassin with a mysterious past.",
+    "He's got the jokes and the healing factor to back it up.",
+    "Don't mess with him Bub.",
+    "Stare deeply into his eyes, and you'll die.",
+    "A truly tragic hero."
 ]
-
 var random = Math.floor(Math.random() * wordList.length);
 var basePath = "./img/";
 
 var image = document.getElementById("photo");
 image.src=basePath+imgList[random];
 
-
+var cap = document.getElementById("caption");
+cap.innerHTML=captionList[random];
 
 var word = wordList[random];
 console.log(word);
@@ -67,8 +90,9 @@ function guessFunction(letter) {
         if (userGuess.toUpperCase() == wordArray[x].toUpperCase()) {
             wordArrayBlank[x] = wordArray[x];
             $("button[value=" + userGuess + "]").css({
-                "color":"white",
-                "background-color":"green"
+                "color":"yellow",
+                "background-color":"red",
+                "font-weight":"bolder"
             });
         } else {
             //--------Collects Wrong Guesses------//
@@ -84,8 +108,8 @@ function guessFunction(letter) {
     //-------Colors Red to Wrong Guess
     if(counter==wordArray.length){
         $("button[value=" + userGuess + "]").css({
-            "color":"white",
-            "background-color":"red"
+            "color":"gray",
+            "background-color":"black"
         });
     }
     
