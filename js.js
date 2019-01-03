@@ -133,9 +133,6 @@ function guessFunction(letter) {
         });
     }
 
-    var stone = document.querySelectorAll("#stone");
-    console.log(stone[0]);
-
     //-------Color Wrong Guess---------------//
     if (counter == wordArray.length) {
         $("button[value=" + userGuess + "]").css({
@@ -164,13 +161,14 @@ function guessFunction(letter) {
             case 0:
                 $("#stone4").fadeOut(
                     function () {
-                        wait(500);
-                        alert("YOU LOSE");
+                        wait(1000);
+                        $('#photo').replaceWith('<video .video-fluid autoplay><source src="./img/thanos/Thanos.mp4" type="video/mp4"></video>')
                 });
         }
     }
     document.getElementById("blank").innerHTML = wordArrayBlank.join(" ");
 }
+
 
 function reload(){
     location.reload();
@@ -184,5 +182,3 @@ function wait(ms) {
         end = new Date().getTime();
     }
 }
-
-
