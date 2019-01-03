@@ -25,3 +25,10 @@ header .container{
 .hide{
     visibility: hidden;
 }
+
+#stone1, #stone2, #stone3, #stone4, #stone5, #stone6{
+    width: 35px;
+    height: auto;
+}
+
+

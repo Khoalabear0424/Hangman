@@ -68,7 +68,7 @@ var word = wordList[random];
 var wordArray = word.split("");
 var wordArrayBlank = word.split("");
 var wrongGuesses = [];
-
+attempts = 6;
 
 
 
@@ -133,6 +133,8 @@ function guessFunction(letter) {
         });
     }
 
+    var stone = document.querySelectorAll("#stone");
+    console.log(stone[0]);
 
     //-------Color Wrong Guess---------------//
     if (counter == wordArray.length) {
@@ -140,16 +142,33 @@ function guessFunction(letter) {
             "color": "purple",
             "background-color": "black"
         });
-    }
 
-    function wait(ms) {
-        var start = new Date().getTime();
-        var end = start;
-        while (end < start + ms) {
-            end = new Date().getTime();
+        attempts--; 
+
+        switch(attempts)  {
+            case 5:
+                $("#stone1").fadeOut();
+            break;
+            case 4:
+                $("#stone6").fadeOut();
+            break;
+            case 3:
+                $("#stone2").fadeOut();
+            break;
+            case 2:
+                $("#stone5").fadeOut();
+            break;
+            case 1:
+                $("#stone3").fadeOut();
+            break;
+            case 0:
+                $("#stone4").fadeOut(
+                    function () {
+                        wait(500);
+                        alert("YOU LOSE");
+                });
         }
     }
-
     document.getElementById("blank").innerHTML = wordArrayBlank.join(" ");
 }
 
@@ -157,5 +176,13 @@ function reload(){
     location.reload();
 }
 
+
+function wait(ms) {
+    var start = new Date().getTime();
+    var end = start;
+    while (end < start + ms) {
+        end = new Date().getTime();
+    }
+}
 
 
