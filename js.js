@@ -39,7 +39,7 @@ captionListHint = [
     "He's got the jokes and the healing factor to back it up.",
     "Don't mess with him Bub.",
     "Stare deeply into his eyes, and you'll die.",
-    "A truly tragic hero."
+    "She's really nice, until she kills everyone by accident.."
 ]
 captionListAnswer = [
     "I don't feel so good...",
@@ -55,33 +55,12 @@ captionListAnswer = [
     "Everything is always red.",
     "KILL EVERYONE!!"
 ]
-var random = Math.floor(Math.random() * wordList.length);
 var basePath = "./img/alterEgo/";
-
-var image = document.getElementById("photo");
-image.src = basePath + imgList[random];
-
-var cap = document.getElementById("caption");
-cap.innerHTML = captionListHint[random];
-
-var word = wordList[random];
-var wordArray = word.split("");
-var wordArrayBlank = word.split("");
-var wrongGuesses = [];
-attempts = 6;
-
-
-
-//-----------Display Blank Words-----------//
-for (var x = 0; x < wordArrayBlank.length; x++) {
-    if (wordArrayBlank[x] != " ") {
-        wordArrayBlank[x] = " __ ";
-    } else {
-        wordArrayBlank[x] = "&nbsp &nbsp";
-    }
-}
-document.getElementById("blank").innerHTML = wordArrayBlank.join(" ");
-
+var secondPath = "./img/hero/";
+var image = document.querySelector("#photo");
+var cap = document.querySelector("#caption");
+win = 0;
+loss = 0;
 
 //------------Add Event Listner to Buttons--------//
 for (var x = 0; x < 26; x++) {
@@ -91,6 +70,46 @@ for (var x = 0; x < 26; x++) {
     });
 }
 
+function startGame() {
+    $("video").replaceWith("<img id='photo' src='#' class='figure-img img-fluid rounded'>");
+    image = document.querySelector("#photo");
+
+    guess = [];
+    random = Math.floor(Math.random() * wordList.length);
+
+    image.src = basePath + imgList[random];
+    cap.innerHTML = captionListHint[random];
+
+    word = wordList[random];
+    wordArray = word.split("");
+    wordArrayBlank = word.split("");
+    attempts = 6;
+
+
+    //-----------Display Blank Words-----------//
+    for (var x = 0; x < wordArrayBlank.length; x++) {
+        if (wordArrayBlank[x] != " ") {
+            wordArrayBlank[x] = " __ ";
+        } else {
+            wordArrayBlank[x] = "&nbsp &nbsp";
+        }
+    }
+    document.querySelector("#blank").innerHTML = wordArrayBlank.join(" ");
+
+    //----------------RELOAD GAME---------------//
+    document.querySelector("#stone1").className = 'fadeIn';
+    document.querySelector("#stone2").className = 'fadeIn';
+    document.querySelector("#stone3").className = 'fadeIn';
+    document.querySelector("#stone4").className = 'fadeIn';
+    document.querySelector("#stone5").className = 'fadeIn';
+    document.querySelector("#stone6").className = 'fadeIn';
+
+    for (var x = 0; x < (butt.length - 1); x++) {
+        butt[x].style.color = "#212529";
+        butt[x].style.backgroundColor = "#f8f9fa";
+        butt[x].style.fontWeight = "400";
+    }
+}
 
 //------------Reveals Correct Guesses---------//
 function guessFunction(letter) {
@@ -101,84 +120,68 @@ function guessFunction(letter) {
     for (var x = 0; x < wordArray.length; x++) {
         if (userGuess.toUpperCase() == wordArray[x].toUpperCase()) {
             wordArrayBlank[x] = wordArray[x];
-            $("button[value=" + userGuess + "]").css({
-                "color": "yellow",
-                "background-color": "red",
-                "font-weight": "bolder"
-            });
+
+            var butt = document.querySelector("button[value=" + userGuess + "]");
+
+            butt.style.color = "yellow";
+            butt.style.backgroundColor = "red";
+            butt.style.fontWeight = "bolder";
+
         } else {
             //--------Collects Wrong Guesses------//
             counter++;
-            // if (counter == wordArray.length && !wrongGuesses.includes(userGuess)) {
-            //     wrongGuesses.push(userGuess);
-            // }
-
-            //^^ THis was used to display incorrect guesses but since i added red backgrounds to incorrect guesses, dont need this anymore
         }
     }
 
-
     //--------------Win State---------------//
     if (!wordArrayBlank.includes(" __ ")) {
-        var secondPath = "./img/hero/";
 
         $("#photo").fadeOut(
             function () {
                 $(this).attr('src', secondPath + imgList[random]).fadeIn(1000);
-        });
+            });
 
         $("#caption").fadeOut(
             function () {
                 $(this).html(captionListAnswer[random]).fadeIn(1000);
-        });
+            });
+
+            win++;
+            document.querySelector("#score1").innerHTML = win;
     }
 
     //-------Color Wrong Guess---------------//
-    if (counter == wordArray.length) {
-        $("button[value=" + userGuess + "]").css({
-            "color": "purple",
-            "background-color": "black"
-        });
+    if (counter == wordArray.length && !guess.includes(letter.value)) {
+        guess.push(letter.value);
+        var butt = document.querySelector("button[value=" + userGuess + "]");
 
-        attempts--; 
+        butt.style.color = "purple";
+        butt.style.backgroundColor = "black";
 
-        switch(attempts)  {
+        attempts--;
+
+        switch (attempts) {
             case 5:
-                $("#stone1").fadeOut();
-            break;
+                document.querySelector("#stone1").className = 'fadeOut';
+                break;
             case 4:
-                $("#stone6").fadeOut();
-            break;
+                document.querySelector("#stone6").className = 'fadeOut';
+                break;
             case 3:
-                $("#stone2").fadeOut();
-            break;
+                document.querySelector("#stone2").className = 'fadeOut';
+                break;
             case 2:
-                $("#stone5").fadeOut();
-            break;
+                document.querySelector("#stone5").className = 'fadeOut';
+                break;
             case 1:
-                $("#stone3").fadeOut();
-            break;
+                document.querySelector("#stone3").className = 'fadeOut';
+                break;
             case 0:
-                $("#stone4").fadeOut(
-                    function () {
-                        wait(1000);
-                        $('#photo').replaceWith('<video .video-fluid autoplay><source src="./img/thanos/Thanos.mp4" type="video/mp4"></video>')
-                });
+                document.querySelector("#stone4").className = 'fadeOut';
+                        $('#photo').replaceWith('<video .video-fluid autoplay><source src="./img/thanos/Thanos.mp4" type="video/mp4"></video>');
+                loss++
+                document.querySelector("#score2").innerHTML = loss;
         }
     }
-    document.getElementById("blank").innerHTML = wordArrayBlank.join(" ");
-}
-
-
-function reload(){
-    location.reload();
-}
-
-
-function wait(ms) {
-    var start = new Date().getTime();
-    var end = start;
-    while (end < start + ms) {
-        end = new Date().getTime();
-    }
+    document.querySelector("#blank").innerHTML = wordArrayBlank.join(" ");
 }
