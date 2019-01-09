@@ -62,6 +62,8 @@ var cap = document.querySelector("#caption");
 win = 0;
 loss = 0;
 
+var canClick = true;
+
 //------------Add Event Listner to Buttons--------//
 for (var x = 0; x < 26; x++) {
     var butt = document.querySelectorAll("button");
@@ -114,6 +116,11 @@ function startGame() {
 //------------Reveals Correct Guesses---------//
 function guessFunction(letter) {
 
+    if (canClick == false) {
+        document.querySelector("#blank").innerHTML = wordArrayBlank.join(" ");
+        return false
+    };
+
     var userGuess = letter.getAttribute('value');
     var counter = 0;
 
@@ -146,8 +153,8 @@ function guessFunction(letter) {
                 $(this).html(captionListAnswer[random]).fadeIn(1000);
             });
 
-            win++;
-            document.querySelector("#score1").innerHTML = win;
+        win++;
+        document.querySelector("#score1").innerHTML = win;
     }
 
     //-------Color Wrong Guess---------------//
@@ -178,10 +185,18 @@ function guessFunction(letter) {
                 break;
             case 0:
                 document.querySelector("#stone4").className = 'fadeOut';
-                        $('#photo').replaceWith('<video .video-fluid autoplay><source src="./img/thanos/Thanos.mp4" type="video/mp4"></video>');
+                $('#photo').replaceWith('<video .video-fluid autoplay><source src="./img/thanos/Thanos.mp4" type="video/mp4"></video>');
                 loss++
                 document.querySelector("#score2").innerHTML = loss;
+                document.querySelector("#blank").innerHTML = wordArray.join("");
+                document.querySelector("#stone1").className = 'fadeIn';
+                document.querySelector("#stone2").className = 'fadeIn';
+                document.querySelector("#stone3").className = 'fadeIn';
+                document.querySelector("#stone4").className = 'fadeIn';
+                document.querySelector("#stone5").className = 'fadeIn';
+                document.querySelector("#stone6").className = 'fadeIn';
+                canClick = false;            
         }
     }
-    document.querySelector("#blank").innerHTML = wordArrayBlank.join(" ");
 }
+
