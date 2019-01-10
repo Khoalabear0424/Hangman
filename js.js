@@ -1,17 +1,17 @@
 
 wordList = [
-    "Spiderman",
-    "Venom",
-    "Iron Man",
-    "Hawk Eye",
-    "Hulk",
-    "Black Panther",
-    "Ant Man",
-    "Black Widow",
-    "Dead Pool",
-    "Wolverine",
-    "Cyclops",
-    "Phoenix"
+    "SPIDERMAN",
+    "VENOM",
+    "IRON MAN",
+    "HAWK EYE",
+    "HULK",
+    "BLACK PANTHER",
+    "ANT MAN",
+    "BLACK WIDOW",
+    "DEAD POOL",
+    "WOLVERINE",
+    "CYCLOPS",
+    "PHOENIX"
 ];
 imgList = [
     "1.png",
@@ -30,14 +30,14 @@ imgList = [
 captionListHint = [
     "A student, a photographer, and your friendly neighborhood hero.",
     "A failed photographer, he's not Peter Parker's biggest fan.",
-    "He's gonna die in Avengers Endgame.",
+    "He's the fearless leader of the Avengers",
     "His super power honestly isn't really a super power.",
     "Don't make him angry!",
     "WAKANDA FOREVAHHH!!",
     "He can kick your ass without you ever even seeing it.",
     "She's an assassin with a mysterious past.",
     "He's got the jokes and the healing factor to back it up.",
-    "Don't mess with him Bub.",
+    "Don't mess with him..Bub.",
     "Stare deeply into his eyes, and you'll die.",
     "She's really nice, until she kills everyone by accident.."
 ]
@@ -73,6 +73,8 @@ for (var x = 0; x < 26; x++) {
 }
 
 function startGame() {
+    canClick = true;
+
     $("video").replaceWith("<img id='photo' src='#' class='figure-img img-fluid rounded'>");
     image = document.querySelector("#photo");
 
@@ -117,7 +119,6 @@ function startGame() {
 function guessFunction(letter) {
 
     if (canClick == false) {
-        document.querySelector("#blank").innerHTML = wordArrayBlank.join(" ");
         return false
     };
 
@@ -131,7 +132,7 @@ function guessFunction(letter) {
             var butt = document.querySelector("button[value=" + userGuess + "]");
 
             butt.style.color = "yellow";
-            butt.style.backgroundColor = "red";
+            butt.style.backgroundColor = "#dc3545";
             butt.style.fontWeight = "bolder";
 
         } else {
@@ -195,8 +196,13 @@ function guessFunction(letter) {
                 document.querySelector("#stone4").className = 'fadeIn';
                 document.querySelector("#stone5").className = 'fadeIn';
                 document.querySelector("#stone6").className = 'fadeIn';
-                canClick = false;            
+                document.querySelector("#blank").innerHTML = wordArray.join(" ");
+                canClick = false;
         }
     }
+    if (canClick == true) {
+        console.log("hello");
+        document.querySelector("#blank").innerHTML = wordArrayBlank.join(" ");
+    };
 }
 
