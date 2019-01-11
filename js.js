@@ -75,7 +75,7 @@ for (var x = 0; x < 26; x++) {
 function startGame() {
     canClick = true;
 
-    $("iframe").replaceWith("<img id='photo' src='#' class='figure-img img-fluid rounded'>");
+    $("video").replaceWith("<img id='photo' src='#' class='figure-img img-fluid rounded'>");
     image = document.querySelector("#photo");
 
     guess = [];
@@ -186,7 +186,9 @@ function guessFunction(letter) {
                 break;
             case 0:
                 document.querySelector("#stone4").className = 'fadeOut';
-                $('#photo').replaceWith('<iframe width="560" height="315" src="https://www.youtube.com/embed/Ijrdwf7LPu0?autoplay=1&showinfo=0&controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"  allowfullscreen></iframe>');
+                $('#photo').replaceWith('<video .video-fluid autoplay><source src="./img/thanos/Thanos.mp4" type="video/mp4"></video>');
+
+                
                 loss++
                 document.querySelector("#score2").innerHTML = loss;
                 document.querySelector("#blank").innerHTML = wordArray.join("");
