@@ -6,7 +6,7 @@ body::after {
     width: 100%;
     background-image: url('./img/css/comicBackground.png');
     background-size: cover;
-    opacity: 0.76;
+    opacity: 0.9;
     top: 0;
     left: 0;
     bottom: 0;
@@ -21,6 +21,9 @@ header h1{
 
 h1{
     text-shadow: 0 0 black, 0 0 black, 1px 3px black, 0 0 black;
+    background-color: #fff9;
+    border-radius: 15px;
+    border: 1px #0004 solid;
 }
 
 header .container{
@@ -102,3 +105,8 @@ figure{
     text-shadow: 0 0 black, 0 0 black, 1px 3px yellow, 0 0 black;
 }
 
+.infinity{
+    background-color: #fff5;
+    padding: 8px;
+    border-radius: 15px;
+}
