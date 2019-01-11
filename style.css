@@ -106,7 +106,8 @@ figure{
 }
 
 .infinity{
-    background-color: #fff5;
+    background-color: #fff9;
     padding: 8px;
     border-radius: 15px;
+    box-shadow:5px 4px;
 }
